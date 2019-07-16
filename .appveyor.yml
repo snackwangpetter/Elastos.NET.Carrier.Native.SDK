@@ -8,7 +8,7 @@ platform:
 
 build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
-  - cmd: 7z a -t7z %APPVEYOR_REPO_TAG_NAME%Test-windows-x64-%date:~10,4%%date:~4,2%%date:~7,2%.7z README.md
+  - cmd: 7z a -t7z %APPVEYOR_REPO_TAG_NAME%Test-windows-x64-%date:~10,4%%date:~4,2%%date:~7,2%.zip README.md
   # - cmd: cd build && mkdir win && cd win
   # - cmd: cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=outputs ..\..
   # - cmd: nmake
