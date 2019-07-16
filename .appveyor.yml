@@ -8,17 +8,18 @@ platform:
 
 build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
-  - cmd: cd build && mkdir win && cd win
-  - cmd: cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=outputs ..\..
-  - cmd: nmake
-  - cmd: nmake install
-  - cmd: nmake dist
-  - cmd: set packagename=%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_REPO_TAG_NAME%-windows-x64-%date:~10,4%%date:~7,2%%date:~4,2%.zip
-  - ps: |
-      if ($env:APPVEYOR_REPO_TAG -eq "false")
-      {
-          7z a -tzip $env:packagename  .\outputs\*
-      }
+  - cmd: 7z a -t7z %APPVEYOR_REPO_TAG_NAME%Test-windows-x64-%date:~10,4%%date:~4,2%%date:~7,2%.7z README.md
+  # - cmd: cd build && mkdir win && cd win
+  # - cmd: cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=outputs ..\..
+  # - cmd: nmake
+  # - cmd: nmake install
+  # - cmd: nmake dist
+  # - cmd: set packagename=%APPVEYOR_BUILD_FOLDER%\%APPVEYOR_REPO_TAG_NAME%-windows-x64-%date:~10,4%%date:~7,2%%date:~4,2%.zip
+  # - ps: |
+  #     if ($env:APPVEYOR_REPO_TAG -eq "false")
+  #     {
+  #         7z a -tzip $env:packagename  .\outputs\*
+  #     }
 
 # for:
 # -
@@ -39,7 +40,7 @@ deploy:
   provider: GitHub
   artifacts:
   auth_token:
-    secure: aFtb3TUkx508V4iYEBhkpa0sOjxvVajBugMjAAd1FlpVJzkaA9+Ep+VfZdeJb++U
+    secure: 314uGlNgr9jn45UI/FhWi5Vq6Lc3cWiETMXqloAjZv61ymBfk2fvxQUaG7RTAOii
   draft: false
   prerelease: false
   on:
